@@ -1,0 +1,10 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "Generate Password Extension",
+    "description": "Easy-to-use strong password generator build with React / Typescript",
+    "action": {
+        "default_popup": "js/index.html",
+        "default_title": "Generate Password Extension"
+    }
+}
