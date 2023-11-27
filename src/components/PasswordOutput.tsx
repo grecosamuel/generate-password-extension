@@ -19,7 +19,7 @@ function PasswordOutput() {
     return(
         <>
         <p style={{fontWeight: 700, display: output === '' ? 'none' : 'block'}}> Your password <FaCopy onClick={copyPassword} style={{ cursor: 'pointer' }}/> </p>
-        <p>{output}</p>
+        <p style={{ overflowWrap: 'break-word' }}>{output}</p>
         <p style={{ fontSize: 14, display: copied ? 'block' : 'none' }}>Copied to clipboard</p>
         </>
     );
