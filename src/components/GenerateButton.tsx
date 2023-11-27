@@ -4,39 +4,19 @@ import { setCopiedToClipboard, setErrorMsg, setPasswordOutput } from '../reducer
 const chars = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
 const symbols = '!@#$%^&*()_+';
+const upper = chars.toUpperCase();
 
 function GenerateButton() {
     const state = useSelector( (state: any) => state);
     const dispatch = useDispatch();
 
-    function getSet() {
-        let set = '';
-        if (state.includeNumbers) {
-            set += numbers;
-        }
-
-        if (state.includeSymbols) {
-            set += symbols;
-        }
-
-        if (state.includeLowercase) {
-            set += chars;
-        }
-
-        if (state.includeUppercase) {
-            set += chars.toUpperCase();
-        }
-        if (set === '') return null;
-        return set;
-    };
 
     function generate() {
-        const set = getSet();
         if (state.passwordLength < 6) {
             dispatch(setErrorMsg('Length should to be at least 6'));
             return;
         }
-        if (!set) {
+        if (!state.includeNumbers && !state.includeSymbols && !state.includeLowercase && !state.includeUppercase) {
             dispatch(setErrorMsg('Select at least one box'));
             dispatch(setPasswordOutput(''));
             return;
@@ -44,11 +24,37 @@ function GenerateButton() {
 
         if (state.errorMsg !== '') dispatch(setErrorMsg(''));
 
-        let result = '';
-        for (let i = 0; i < state.passwordLength; i++) {
+        let result = '', set = '';
+
+        if (state.includeNumbers) {
+            set += numbers;
+            result += numbers.charAt(Math.floor(Math.random() * numbers.length));
+        }
+
+        if (state.includeSymbols) {
+            set += symbols;
+            result += symbols.charAt(Math.floor(Math.random() * symbols.length));
+        }
+
+        if (state.includeLowercase) {
+            set += chars;
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        if (state.includeUppercase) {
+            set += upper;
+            result += upper.charAt(Math.floor(Math.random() * upper.length));
+        }
+
+        let maxIter = state.passwordLength - result.length;
+
+        for (let i = 0; i < maxIter; i++) {
             const randomIndex = Math.floor(Math.random() * set.length);
             result += set.charAt(randomIndex);
         }
+        
+        result = result.split('').sort(() => Math.random() - 0.5 + Math.random() - 0.5).join('');
+
         dispatch(setPasswordOutput(result));
         if (state.copiedToClipboard) dispatch(setCopiedToClipboard(false));
     };
