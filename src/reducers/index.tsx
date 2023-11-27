@@ -7,6 +7,7 @@ interface AppState {
     includeUppercase: boolean,
     passwordLength: number,
     passwordOutput: string,
+    errorMsg: string
 };
 
 const initialState: AppState  = {
@@ -15,7 +16,8 @@ const initialState: AppState  = {
     includeLowercase: false,
     includeUppercase: false,
     passwordLength: 16,
-    passwordOutput: ''
+    passwordOutput: '',
+    errorMsg: ''
 };
 
 const rootReducer = createSlice({
@@ -39,8 +41,18 @@ const rootReducer = createSlice({
         },
         setPasswordOutput: (state, action: PayloadAction<string>) => {
             state.passwordOutput = action.payload;
+        },
+        setErrorMsg: (state, action: PayloadAction<string>) => {
+            state.errorMsg = action.payload;
         }
     }
 });
-export const { includeNumbers, includeSymbols, includeLowercase, includeUppercase, setPasswordLength, setPasswordOutput } = rootReducer.actions;
+export const { 
+    includeNumbers,
+    includeSymbols,
+    includeLowercase,
+    includeUppercase,
+    setPasswordLength,
+    setPasswordOutput,
+    setErrorMsg } = rootReducer.actions;
 export default rootReducer.reducer;
