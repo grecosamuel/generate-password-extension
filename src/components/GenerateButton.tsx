@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setErrorMsg, setPasswordOutput } from '../reducers';
+import { setCopiedToClipboard, setErrorMsg, setPasswordOutput } from '../reducers';
 
 const chars = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
@@ -47,6 +47,7 @@ function GenerateButton() {
             result += set.charAt(randomIndex);
         }
         dispatch(setPasswordOutput(result));
+        if (state.copiedToClipboard) dispatch(setCopiedToClipboard(false));
     };
 
     return(
