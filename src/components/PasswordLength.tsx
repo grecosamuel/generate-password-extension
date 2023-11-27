@@ -1,12 +1,13 @@
-import { useState, ChangeEvent } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setPasswordLength } from '../reducers';
 function PasswordLength() {
 
-    const [length, setLength] = useState<number>(16);
+    const length = useSelector( (state: any) => state.passwordLength);
+    const dispatch = useDispatch();
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(event.target.value);
-        setLength(value);
+        dispatch(setPasswordLength(value));
     };
     
     

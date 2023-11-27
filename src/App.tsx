@@ -3,7 +3,7 @@ import Checkbox from './components/Checkbox';
 import GenerateButton from './components/GenerateButton';
 import PasswordLength from './components/PasswordLength';
 import PasswordOutput from './components/PasswordOutput';
-
+import { includeNumbers, includeSymbols, includeLowercase, includeUppercase } from './reducers';
 function App() {
   return (
     <div className="App">
@@ -12,11 +12,11 @@ function App() {
       </h3>
 
       <div className="boxes">
-        <Checkbox boxname='includenumbers' boxlabel='Include numbers'/>
-        <Checkbox boxname='includesymbols' boxlabel='Include symbols'/>
+        <Checkbox boxname='includenumbers' boxlabel='Include numbers' stateName='includeNumbers' action={includeNumbers}/>
+        <Checkbox boxname='includesymbols' boxlabel='Include symbols' stateName='includeSymbols' action={includeSymbols}/>
 
-        <Checkbox boxname='includelowercase' boxlabel='Lowercase'/>
-        <Checkbox boxname='includeuppercase' boxlabel='Uppercase'/>
+        <Checkbox boxname='includelowercase' boxlabel='Lowercase' stateName='includeLowercase' action={includeLowercase}/>
+        <Checkbox boxname='includeuppercase' boxlabel='Uppercase' stateName='includeUppercase' action={includeUppercase}/>
       </div>
 
 
