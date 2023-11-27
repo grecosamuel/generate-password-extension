@@ -4,6 +4,7 @@ function PasswordLength() {
 
     const length = useSelector( (state: any) => state.passwordLength);
     const dispatch = useDispatch();
+    const minValue = 6;
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(event.target.value);
@@ -14,7 +15,7 @@ function PasswordLength() {
     return(
         <div className="passwordlengthContainer">
             <label htmlFor="passwordLengthInput">Password length</label>
-            <input type="number" value={length} id="passwordLengthInput" onChange={handleInputChange}/>
+            <input type="number" value={length} id="passwordLengthInput" onChange={handleInputChange} min={minValue}/>
         </div>
     );
 }
