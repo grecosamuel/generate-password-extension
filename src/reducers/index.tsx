@@ -12,10 +12,10 @@ interface AppState {
 };
 
 const initialState: AppState  = {
-    includeNumbers: false,
-    includeSymbols: false,
-    includeLowercase: false,
-    includeUppercase: false,
+    includeNumbers: true,
+    includeSymbols: true,
+    includeLowercase: true,
+    includeUppercase: true,
     passwordLength: 16,
     passwordOutput: '',
     errorMsg: '',
