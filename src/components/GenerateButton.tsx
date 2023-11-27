@@ -35,8 +35,11 @@ function GenerateButton() {
         
         if (!set) {
             dispatch(setErrorMsg('Select at least one box'));
+            dispatch(setPasswordOutput(''));
             return;
         }
+
+        if (state.errorMsg !== '') dispatch(setErrorMsg(''));
 
         let result = '';
         for (let i = 0; i < state.passwordLength; i++) {
