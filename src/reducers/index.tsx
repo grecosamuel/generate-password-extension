@@ -7,7 +7,8 @@ interface AppState {
     includeUppercase: boolean,
     passwordLength: number,
     passwordOutput: string,
-    errorMsg: string
+    errorMsg: string,
+    copiedToClipboard: boolean,
 };
 
 const initialState: AppState  = {
@@ -17,7 +18,8 @@ const initialState: AppState  = {
     includeUppercase: false,
     passwordLength: 16,
     passwordOutput: '',
-    errorMsg: ''
+    errorMsg: '',
+    copiedToClipboard: false
 };
 
 const rootReducer = createSlice({
@@ -44,6 +46,9 @@ const rootReducer = createSlice({
         },
         setErrorMsg: (state, action: PayloadAction<string>) => {
             state.errorMsg = action.payload;
+        },
+        setCopiedToClipboard: (state, action: PayloadAction<boolean>) => {
+            state.copiedToClipboard = action.payload;
         }
     }
 });
@@ -54,5 +59,6 @@ export const {
     includeUppercase,
     setPasswordLength,
     setPasswordOutput,
-    setErrorMsg } = rootReducer.actions;
+    setErrorMsg,
+    setCopiedToClipboard } = rootReducer.actions;
 export default rootReducer.reducer;
