@@ -32,7 +32,10 @@ function GenerateButton() {
 
     function generate() {
         const set = getSet();
-        
+        if (state.passwordLength < 6) {
+            dispatch(setErrorMsg('Length should to be at least 6'));
+            return;
+        }
         if (!set) {
             dispatch(setErrorMsg('Select at least one box'));
             dispatch(setPasswordOutput(''));
