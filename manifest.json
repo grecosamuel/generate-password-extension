@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.2.0",
     "manifest_version": 3,
     "name": "Generate Password Extension",
     "description": "Easy-to-use strong password generator build with React / Typescript",
@@ -9,7 +9,7 @@
     },
     "browser_specific_settings": {
         "gecko": {
-          "id": "generate-password-extension-spwl34jsd"
+          "id": "sgrecoaddon@passwordgenerator"
         }
     },      
     "icons": {
