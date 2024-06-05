@@ -88,3 +88,11 @@ body {
 .error-msg {
   color: rgb(255, 0, 0);
 }
+
+.copypaste-icon {
+  color: var(--secondary-color);
+
+  &:hover {
+    color:  var(--primary-color);
+  }
+}

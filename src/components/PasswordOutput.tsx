@@ -18,7 +18,7 @@ function PasswordOutput() {
 
     return(
         <>
-        <p style={{ overflowWrap: 'break-word' }}>{output} <FaCopy onClick={copyPassword} style={{ cursor: 'pointer', marginLeft: 2, display: output === '' ? 'none' : 'inline' }}/> </p>
+        <p style={{ overflowWrap: 'break-word' }}>{output} <FaCopy className="copypaste-icon" onClick={copyPassword} style={{ cursor: 'pointer', marginLeft: 2, display: output === '' ? 'none' : 'inline' }}/> </p>
         <p style={{ fontSize: 14, display: copied ? 'block' : 'none' }}>Copied to clipboard</p>
         </>
     );
