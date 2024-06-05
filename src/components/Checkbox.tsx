@@ -12,14 +12,13 @@ function Checkbox({boxname, boxlabel, stateName, action, boxid=boxname}:BoxInter
     const dispatch = useDispatch();
     const value = useSelector( (state: any) => state[stateName]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => {
         dispatch(action(Boolean(!value)));
     };
 
     return(
         <div className='boxChild'>
-            <label htmlFor={boxid}> {boxlabel} </label>
-            <input type="checkbox" name={boxname} id={boxid} checked={value} onChange={handleChange}/>        
+            <button className={`${value ? 'active' : ''}`} id={boxid} onClick={handleChange}>{boxlabel}</button>
         </div>
     );
 }
